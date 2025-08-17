@@ -79,6 +79,26 @@
     .card p { color: var(--muted); margin: .2rem 0 .8rem; }
     .card .meta { display:flex; flex-wrap:wrap; gap:.5rem; }
 
+    .project-thumb.llm {
+    background: url('assets/images/uber_fare.jpg') center/cover no-repeat; 
+    }
+
+    .project-thumb.uber  {
+    background: url('assets/images/uber-web-test.png') center/cover no-repeat; background-size: 115%; 
+    }
+
+    .project-thumb.cctv {
+    background: url('assets/images/traffic-web.png') center/cover no-repeat; background-size: 110%; 
+    }
+
+    .project-thumb.vlm {
+    background: url('assets/images/vlm-plate.jpg') center/cover no-repeat;
+    }
+
+    .project-thumb.emotion {
+    background: url('assets/images/fer.png') center/cover no-repeat;
+    }
+
     .project-thumb { aspect-ratio: 16/9; border-radius:.8rem; overflow:hidden; border:1px solid var(--card-border); background:
       radial-gradient(1200px 500px at -10% -30%, rgba(14,165,233,.25), transparent),
       conic-gradient(from 180deg at 30% 10%, rgba(14,165,233,.18), rgba(167,139,250,.18), rgba(56,189,248,.18), rgba(14,165,233,.18));
@@ -166,7 +186,7 @@
         </div>
       </div>
       <div class="hero-card">
-        <div class="project-thumb" aria-hidden="true"></div>
+        <div class="project-thumb llm" aria-hidden="true"></div>
         <div style="display:flex; gap:.5rem; margin-top:.8rem; flex-wrap:wrap;">
           <span class="tag">LLM</span>
           <span class="tag">Fine Tuning</span>
@@ -186,7 +206,7 @@
       </div>
       <div class="grid">
         <article class="card" style="grid-column: span 12; display:grid; grid-template-columns: 5fr 7fr; gap:1rem; align-items:center;">
-          <div class="project-thumb"></div>
+          <div class="project-thumb uber"></div>
           <div>
             <div class="title-card">Machine Learning for Uber Fare Prediction in NYC</div>
             <p>Uber fare prediction in NYC using XGBoost regression. Incorporates real road distances from OSMnx for higher accuracy, deployed via Flask web app</p>
@@ -200,7 +220,7 @@
         </article>
 
         <article class="card">
-          <div class="project-thumb"></div>
+          <div class="project-thumb cctv"></div>
           <div class="title-card">YOLO-Based Vehicle Detection on Jakarta Traffic CCTV Feeds</div>
           <p>Detects cars, motorcycles, buses, and trucks, classifies traffic density, and visualizes results via a Flask web interface with live streams and real-time charts</p>
           <div class="meta"><span class="tag">YOLO</span><span class="tag">Computer Vision</span><span class="tag">Traffic Monitoring</span></div>
@@ -210,10 +230,10 @@
         </article>
 
         <article class="card">
-          <div class="project-thumb"></div>
+          <div class="project-thumb vlm"></div>
           <div class="title-card">License Plate Recognition with Qwen 2.5 VL</div>
           <p>License Plate Recognition for Indonesian vehicles using YOLOv8m for detection and Qwen-VL for OCR, processing images and videos locally with high-precision plate number extraction</p>
-          <div class="meta"><span class="tag">XGBoost</span><span class="tag">OSMnx</span><span class="tag">Streamlit</span></div>
+          <div class="meta"><span class="tag">VLM</span><span class="tag">QWEN 2.5 VL</span><span class="tag">OCR</span></div>
           <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
             <a target="_blank" rel="noopener noreferrer" class="btn" href="https://huggingface.co/spaces/fachrysann/indonesia-lpr">Demo</a>
             <a target="_blank" rel="noopener noreferrer" class="btn" href="https://github.com/fachrysann/License-Plate-VLM">Code</a>
@@ -221,7 +241,7 @@
         </article>
 
         <article class="card">
-          <div class="project-thumb"></div>
+          <div class="project-thumb emotion"></div>
           <div class="title-card">Real-Time Emotion Recognition via Webcam</div>
           <p>Emotion recognition from facial expressions using deep learning (MiniVGG) on FER2013+ dataset, achieving 81.4% accuracy across 8 classes</p>
           <div class="meta"><span class="tag">OpenCV</span><span class="tag">Computer Vision</span><span class="tag">Emotion Detection</span></div>
