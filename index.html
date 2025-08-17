@@ -16,7 +16,7 @@
   <style>
     /* ====== CSS RESET ====== */
     *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding: 2rem;}
     body { margin: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; line-height: 1.6; }
     img, svg, video { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
@@ -43,6 +43,8 @@
       --card-border: rgba(2,6,23,.08);
       --shadow: 0 10px 30px rgba(2, 6, 23, .08);
     }
+
+    .title-card { padding-top: 10px;}
 
     body { background: var(--bg); color: var(--text); }
     .container { width: min(1100px, 92vw); margin: 0 auto; }
@@ -154,26 +156,25 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div>
-        <div class="tag">Available for freelance & remote roles</div>
+        <div class="tag">Available for internship</div>
         <h1>Hi, I'm <span class="gradient">Fachry</span> — I build <em>useful</em> ML systems & delightful data apps.</h1>
-        <p>I specialize in computer vision (YOLO, rain-streak estimation), tabular ML, and full‑stack dashboards. I love shipping models to production and keeping UX clean.</p>
+        <p>Data scientist and machine learning enthusiast with experience in computer vision, tabular modeling, and end-to-end model deployment. Passionate about building practical ML solutions and interactive dashboards.</p>
         <div style="display:flex; gap:.7rem; margin-top:1.2rem; flex-wrap:wrap;">
           <a class="btn primary" href="#projects">See Projects</a>
           <a class="btn" href="resume.pdf" download>Download CV</a>
-          <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://github.com/fachrysann" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <div class="hero-card">
         <div class="project-thumb" aria-hidden="true"></div>
         <div style="display:flex; gap:.5rem; margin-top:.8rem; flex-wrap:wrap;">
-          <span class="tag">Python</span>
+          <span class="tag">LLM</span>
+          <span class="tag">Fine Tuning</span>
+          <span class="tag">HuggingFace</span>
           <span class="tag">PyTorch</span>
-          <span class="tag">YOLOv8</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">PostgreSQL</span>
+          <span class="tag">NLP</span>
         </div>
-        <p style="margin-top:.8rem; color:var(--muted); font-size:.95rem;">Currently exploring CCTV‑based rainfall estimation with a hybrid CNN and deploying lightweight inference services.</p>
+        <p style="margin-top:.8rem; color:var(--muted); font-size:.95rem;">Currently exploring open-source LLM fine-tuning and customization for domain-specific applications, with hands-on experience in model adaptation and deployment</p>
       </div>
     </section>
 
@@ -187,48 +188,45 @@
         <article class="card" style="grid-column: span 12; display:grid; grid-template-columns: 5fr 7fr; gap:1rem; align-items:center;">
           <div class="project-thumb"></div>
           <div>
-            <div class="title">Rainfall from CCTV — Hybrid CNN</div>
-            <p>End‑to‑end pipeline predicting rainfall intensity from roadside cameras. Joint rain‑streak extraction + RGB CNN features fused for robust inference.</p>
+            <div class="title-card">Machine Learning for Uber Fare Prediction in NYC</div>
+            <p>Uber fare prediction in NYC using XGBoost regression. Incorporates real road distances from OSMnx for higher accuracy, deployed via Flask web app</p>
             <div class="meta">
-              <span class="tag">PyTorch</span><span class="tag">CNN</span><span class="tag">MLOps</span><span class="tag">Hydra</span>
+              <span class="tag">Machine Learning</span><span class="tag">XGBoost</span><span class="tag">Data Science</span><span class="tag">Web App</span>
             </div>
             <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-              <a class="btn" href="#" target="_blank" rel="noopener">Live Demo</a>
-              <a class="btn" href="#" target="_blank" rel="noopener">Code</a>
+              <a target="_blank" rel="noopener noreferrer" class="btn" href="https://github.com/fachrysann/Uber_fare_prediction" target="_blank" rel="noopener">Code</a>
             </div>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb"></div>
-          <div class="title">YOLO ID Card (KTP) Scanner</div>
-          <p>Object detection + OCR pipeline that auto‑crops KTP and extracts fields. Built for batch automation.</p>
-          <div class="meta"><span class="tag">YOLOv8</span><span class="tag">Tesseract</span><span class="tag">FastAPI</span></div>
+          <div class="title-card">YOLO-Based Vehicle Detection on Jakarta Traffic CCTV Feeds</div>
+          <p>Detects cars, motorcycles, buses, and trucks, classifies traffic density, and visualizes results via a Flask web interface with live streams and real-time charts</p>
+          <div class="meta"><span class="tag">YOLO</span><span class="tag">Computer Vision</span><span class="tag">Traffic Monitoring</span></div>
           <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a class="btn" href="#">Demo</a>
-            <a class="btn" href="#">Code</a>
+            <a target="_blank" rel="noopener noreferrer" class="btn" href="https://github.com/fachrysann/Car-Detection">Code</a>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb"></div>
-          <div class="title">Uber Fare Predictor</div>
-          <p>Feature‑engineered regression with road‑network distance via OSMnx. Shipped as a sleek web app with map visualization.</p>
+          <div class="title-card">License Plate Recognition with Qwen 2.5 VL</div>
+          <p>License Plate Recognition for Indonesian vehicles using YOLOv8m for detection and Qwen-VL for OCR, processing images and videos locally with high-precision plate number extraction</p>
           <div class="meta"><span class="tag">XGBoost</span><span class="tag">OSMnx</span><span class="tag">Streamlit</span></div>
           <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a class="btn" href="#">Demo</a>
-            <a class="btn" href="#">Code</a>
+            <a target="_blank" rel="noopener noreferrer" class="btn" href="https://huggingface.co/spaces/fachrysann/indonesia-lpr">Demo</a>
+            <a target="_blank" rel="noopener noreferrer" class="btn" href="https://github.com/fachrysann/License-Plate-VLM">Code</a>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb"></div>
-          <div class="title">Spotify Recommender</div>
-          <p>Track embeddings + similarity search to recommend songs; includes feature scraper and tidy EDA notebooks.</p>
-          <div class="meta"><span class="tag">Python</span><span class="tag">FAISS</span><span class="tag">EDA</span></div>
+          <div class="title-card">Real-Time Emotion Recognition via Webcam</div>
+          <p>Emotion recognition from facial expressions using deep learning (MiniVGG) on FER2013+ dataset, achieving 81.4% accuracy across 8 classes</p>
+          <div class="meta"><span class="tag">OpenCV</span><span class="tag">Computer Vision</span><span class="tag">Emotion Detection</span></div>
           <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a class="btn" href="#">Demo</a>
-            <a class="btn" href="#">Code</a>
+            <a target="_blank" rel="noopener noreferrer" class="btn" href="https://github.com/fachrysann/EmotionRecognition_DeepLearning">Code</a>
           </div>
         </article>
       </div>
@@ -250,14 +248,29 @@
       <div class="section-head"><h2>Experience</h2></div>
       <div class="timeline">
         <div class="tl-item">
-          <div class="title">Data & AI Engineer — Freelancer</div>
-          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">2023 — Present</div>
-          <p>Delivering end‑to‑end ML prototypes and production APIs for small businesses and research projects.</p>
+          <div class="title">PBI(Project-Based Internship) Big Data Analytics — Kimia Farma</div>
+          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Aug 2025 – Present</div>
+          <p>Participating in a project-based internship focused on big data analytics through weekly tasks, training modules, and a capstone project.</p>
         </div>
         <div class="tl-item">
-          <div class="title">Digital Skola — Projects</div>
-          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">2024 — 2025</div>
-          <p>Built several data apps, explored wrangling, mapping, and model deployment workflows.</p>
+          <div class="title">Data Science Student — Digital Skola</div>
+          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Mar 2025 – Aug 2025</div>
+          <p>Built a strong foundation in data science, covering modeling, evaluation, and deployment while gaining hands-on experience with SQL, Python, statistics, visualization, and machine learning.</p>
+        </div>
+        <div class="tl-item">
+          <div class="title">Digital Electronics Laboratory Assistant — Universitas Indonesia</div>
+          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Sep 2024 – Dec 2024</div>
+          <p>Supported lab sessions by revising modules, troubleshooting logic circuits, and evaluating student work with digital trainers and FPGA simulations.</p>
+        </div>
+        <div class="tl-item">
+          <div class="title">Machine Learning Cohort — Bangkit Academy</div>
+          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Feb 2024 – Jul 2024</div>
+          <p>Completed 900+ hours of ML training, developed an NLP-based mental health app as a capstone project, and strengthened technical and soft skills for industry readiness.</p>
+        </div>
+        <div class="tl-item">
+          <div class="title">Freelance Subtitler — Sea Today</div>
+          <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Jun 2021 – Nov 2023</div>
+          <p>Translated and subtitled 10+ TV show episodes from Indonesian to English, ensuring clarity and cultural accuracy for international viewers.</p>
         </div>
       </div>
     </section>
