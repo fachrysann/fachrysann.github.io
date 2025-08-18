@@ -16,6 +16,37 @@ input, textarea {
   font-size: 1rem;
 }
 
+#projects {
+  position: relative; /* makes sure side images stay inside this section */
+}
+
+.side-img {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Example section images */
+.side-img.left1 {
+  width: 600px;
+  top: -120px;
+  right: 770px;
+}
+
+.side-img.right1 {
+  width: 450px;
+  top: 700px;
+  left: 900px;
+}
+
+/* Example section images */
+.side-img.left2 {
+  width: 500px;
+  top: -800px;
+  right: 150px;
+  transform: rotate(-50deg);
+}
+
 input::placeholder,
 textarea::placeholder {
   color: color-mix(in oklab, var(--muted) 70%, transparent);
@@ -29,7 +60,7 @@ label {
 }
 
 :root {
-  --bg: #0b1020;
+  --bg: #000000;
   --panel: rgba(15, 23, 42, 0.55); /* glassy */
   --gradient: linear-gradient(90deg, var(--brand), #22d3ee, #a78bfa);
   --muted: #94a3b8;
@@ -107,8 +138,14 @@ header {
 .nav { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; }
 .nav a.brand { font-weight:800; letter-spacing:.4px; font-size:1.05rem; }
 .nav ul { display:flex; gap:1rem; list-style:none; padding:0; margin:0; align-items:center; }
-.nav a.link { padding:.5rem .75rem; border-radius:.7rem; color:var(--muted); }
-.nav a.link:hover { color:var(--text); }
+.nav a.link {
+  color: var(--text);   /* pakai warna utama teks */
+  opacity: .85;         /* sedikit redup biar ga terlalu mencolok */
+}
+.nav a.link:hover {
+  opacity: 1; 
+  color: var(--accent, #60a5fa); /* kasih warna aksen kalau ada */
+}
 .hamburger { display:none; border:1px solid var(--card-border); border-radius:.75rem; padding:.55rem .7rem; }
 
 /* ====== HERO ====== */
@@ -116,14 +153,20 @@ header {
 .hero h1 { font-size: clamp(2rem, 3.2vw + 1rem, 3.5rem); line-height:1.1; margin:.2rem 0 1rem; }
 .gradient { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero p { color: var(--muted); font-size: 1.05rem; }
-.hero-card { 
-  border:1px solid var(--card-border); 
-  padding:1.2rem; 
-  border-radius:1.2rem; 
-  background: var(--card); 
+.hero-card {
+  border: 1px solid var(--card-border);
+  border-radius: 1.2rem;
+  background: var(--card);
   backdrop-filter: blur(14px) saturate(180%);
   -webkit-backdrop-filter: blur(14px) saturate(180%);
-  box-shadow: var(--shadow); 
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-8px) scale(1.015); /* agak halus, ga terlalu gede */
+  box-shadow: 0 18px 45px rgba(0,0,0,0.35); /* shadow lebih deep */
 }
 
 .social-links a {
@@ -152,16 +195,24 @@ section { padding: 3.5rem 0; }
 .section-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 1.6rem; gap: 1rem; }
 .section-head h2 { font-size:2rem; margin:0; }
 .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap:1rem; }
-.card { 
-  grid-column: span 6; 
-  border:1px solid var(--card-border); 
-  border-radius:1.1rem; 
-  background: var(--card); 
+.card {
+  grid-column: span 6;
+  border: 1px solid var(--card-border);
+  border-radius: 1.1rem;
+  background: var(--card);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  padding:1.1rem; 
-  box-shadow: var(--shadow); 
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease; /* smooth hover */
 }
+
+/* Hover untuk semua card KECUALI yang di dalam #contact */
+.card:hover:not(#contact .card) {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
 .card .title { font-weight:700; margin:.2rem 0 .3rem; }
 .card p { color: var(--muted); margin: .2rem 0 .8rem; }
 .card .meta { display:flex; flex-wrap:wrap; gap:.5rem; }
@@ -209,11 +260,37 @@ footer {
 }
 
 /* ====== RESPONSIVE ====== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; }
   .card { grid-column: span 12; }
   .nav ul.links { display:none; }
   .hamburger { display:inline-flex; }
+
+  /* hide side images on phone */
+  .side-img {
+    display: none;
+  }
+
+  /* safe spacing biar nggak kepotong di iPhone */
+  body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 92vw;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* iOS notch safe area */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
   .mobile { 
     display:none; 
     position:absolute; 

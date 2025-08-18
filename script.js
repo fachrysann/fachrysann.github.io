@@ -16,3 +16,12 @@ menuBtn.addEventListener('click', () => toggleMenu());
 window.addEventListener('resize', () => { if (window.innerWidth > 900) mobile.style.display = 'none'; });
 
 
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", () => {
+  const isLight = document.documentElement.classList.toggle("light");
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+});
+
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();

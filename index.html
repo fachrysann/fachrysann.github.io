@@ -102,8 +102,11 @@
     <!-- PROJECTS -->
     <!-- PROJECTS -->
     <section id="projects">
+    <img src="assets/images/s1-l.png" class="side-img left1">
+    <img src="assets/images/s1-r.png" class="side-img right1">
+    <img src="assets/images/s2-l.png" class="side-img left2">
       <div class="section-head">
-        <h2><span class="gradient">Featured Projects</span></h2>
+        <h2>Featured Projects</h2>
         <a class="btn" href="https://github.com/fachrysann" target="_blank" rel="noopener">All Repos</a>
       </div>
       <div class="grid">
@@ -157,7 +160,7 @@
     <!-- SKILLS -->
     <section id="skills">
     <div class="section-head">
-       <h2><span class="gradient">Skills</span></h2>
+       <h2>Skills</h2>
     </div>
     <div class="grid">
         <div class="card">
@@ -185,7 +188,7 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-head">
-        <h2><span class="gradient">Experience</span></h2>
+        <h2>Experience</h2>
       </div>
       <div class="timeline">
         <div class="tl-item">
@@ -218,7 +221,7 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="section-head">
-        <h2><span class="gradient">Contact</span></h2>
+        <h2>Contact</h2>
       </div>
       <div class="card" style="grid-column: span 12;">
         <form id="contactForm" action="https://formspree.io/f/mqalodoz" method="POST" style="display:grid; gap:.8rem;">
@@ -246,7 +249,7 @@
   </main>
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-      <div>© <span id="year"></span></div>
+      <div>© <span id="year"></span> Fachry Syifa Ananda</div>
         <div class="social-links">
         <a href="mailto:fachrysananda@gmail.com" aria-label="Email">
             <i class="fa-solid fa-envelope"></i>
@@ -261,35 +264,6 @@
     </div>
   </footer>
   <!-- JS -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // cegah redirect bawaan
-        status.textContent = 'Sending…';
-
-        try {
-        const res = await fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-            status.textContent = '✅ Thanks! I will reply soon.';
-            form.reset();
-        } else {
-            const data = await res.json();
-            status.textContent = data.error || '❌ Oops, something went wrong.';
-        }
-        } catch (err) {
-        status.textContent = '⚠️ Network error. Try again.';
-        }
-    });
-    });
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
