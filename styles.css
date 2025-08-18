@@ -271,12 +271,6 @@ footer {
     display: none;
   }
 
-  /* safe spacing biar nggak kepotong di iPhone */
-  body, html {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
   .container {
     width: 92vw;
     margin: 0 auto;
