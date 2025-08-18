@@ -299,5 +299,12 @@ footer {
   .mobile a:hover { color:var(--text); background:rgba(148,163,184,.08); }
 }
 
+@media (max-width: 900px) {
+  .card.special {  /* kasih class baru misal "special" */
+    display: block;  /* atau grid-template-columns: 1fr */
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* ====== ACCESSIBILITY ====== */
 :focus-visible { outline: none; box-shadow: var(--ring); border-radius: .5rem; }
