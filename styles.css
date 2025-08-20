@@ -286,6 +286,10 @@ html.light .section-head {
 .project-thumb.emotion {
   background: url('assets/images/fer.png') center/cover no-repeat;
 }
+.project-thumb.CC {
+  background: url('assets/images/cc.png') center/cover no-repeat;
+}
+
 .project-thumb { 
   aspect-ratio: 16/9; 
   border-radius:.8rem; 
