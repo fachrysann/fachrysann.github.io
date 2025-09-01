@@ -27,8 +27,8 @@
   <script>
     (function(){
       const saved = localStorage.getItem('theme');
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      if (saved === 'light' || (!saved && prefersLight)) document.documentElement.classList.add('light');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) document.documentElement.classList.add('dark');
     })();
   </script>
 
@@ -108,66 +108,60 @@
 
     <!-- PROJECTS -->
     <section id="projects">
-    <img src="assets/images/s1-l.png" class="side-img left1">
-    <img src="assets/images/s1-r.png" class="side-img right1">
-    <img src="assets/images/s2-l.png" class="side-img left2">
-
       <div class="section-head">
         <h2>Featured Projects</h2>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card special">
           <div class="project-thumb uber"></div>
-          <div>
-            <div class="title-card">Machine Learning for Uber Fare Prediction in NYC</div>
-            <p>Uber fare prediction in NYC using XGBoost regression. Incorporates real road distances from OSMnx for higher accuracy, deployed via Flask web app</p>
-            <div class="meta">
-              <span class="tag">Machine Learning</span><span class="tag">Data Science</span><span class="tag">Web App</span>
-            </div>
-            <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-              <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/Uber_fare_prediction" target="_blank" rel="noopener">Code</a>
-            </div>
+          <div class="title">Machine Learning for Uber Fare Prediction in NYC</div>
+          <p>Uber fare prediction in NYC using XGBoost regression. Incorporates real road distances from OSMnx for higher accuracy, deployed via Flask web app</p>
+          <div class="meta">
+            <span class="tag">Machine Learning</span><span class="tag">XGBoost</span><span class="tag">Data Science</span><span class="tag">Web App</span>
+          </div>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/Uber_fare_prediction">View Project</a>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb cctv"></div>
-          <div class="title-card">YOLO-Based Vehicle Detection on Jakarta Traffic CCTV Feeds</div>
+          <div class="title">YOLO-Based Vehicle Detection on Jakarta Traffic CCTV Feeds</div>
           <p>Detects cars, motorcycles, buses, and trucks, classifies traffic density, and visualizes results via a Flask web interface with live streams and real-time charts</p>
           <div class="meta"><span class="tag">YOLO</span><span class="tag">Computer Vision</span><span class="tag">Traffic Monitoring</span></div>
-          <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/Car-Detection">Code</a>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/Car-Detection">View Project</a>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb kf"></div>
-          <div class="title-card">Kimia Farma Big Data Analytics</div>
-          <p>An analytics dashboard of Kimia Farma’s business performance (2020–2023), built using BigQuery and visualized in Looker Studio to provide insights on sales, profit, and branch performance</p>
+          <div class="title">Kimia Farma Big Data Analytics</div>
+          <p>An analytics dashboard of Kimia Farma's business performance (2020–2023), built using BigQuery and visualized in Looker Studio to provide insights on sales, profit, and branch performance</p>
           <div class="meta"><span class="tag">Data Analytics</span><span class="tag">BigQuery</span><span class="tag">Looker Studio</span></div>
-          <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/kimia-farma-pbi">Code</a>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/kimia-farma-pbi">View Project</a>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb vlm"></div>
-          <div class="title-card">License Plate Recognition with Qwen 2.5 VL</div>
+          <div class="title">License Plate Recognition with Qwen 2.5 VL</div>
           <p>License Plate Recognition for Indonesian vehicles using YOLOv8m for detection and Qwen-VL for OCR, processing images and videos locally with high-precision plate number extraction</p>
           <div class="meta"><span class="tag">VLM</span><span class="tag">QWEN 2.5 VL</span><span class="tag">OCR</span></div>
-          <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a target="_blank" rel="noopener noreferrer" class="btn" href="https://huggingface.co/spaces/fachrysann/indonesia-lpr">Demo</a>
-            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/License-Plate-VLM">Code</a>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+            <a target="_blank" rel="noopener noreferrer" class="btn" href="https://huggingface.co/spaces/fachrysann/indonesia-lpr">Live Demo</a>
+            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/License-Plate-VLM">View Project</a>
           </div>
         </article>
 
         <article class="card">
           <div class="project-thumb CC"></div>
-          <div class="title-card">Credit Card Fraud Detection</div>
+          <div class="title">Credit Card Fraud Detection</div>
           <p>Credit card fraud detection using XGBoost and CatBoost on the European transactions dataset (Kaggle), achieving 0.894 AUPRC and 93% fraud recall across 284k transactions.</p>
           <div class="meta"><span class="tag">Finance</span><span class="tag">Classification</span><span class="tag">Fraud Detection</span></div>
-          <div style="margin-top:.8rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/credit-card-fraud">Code</a>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
+            <a target="_blank" rel="noopener noreferrer" class="btn primary" href="https://github.com/fachrysann/credit-card-fraud">View Project</a>
           </div>
         </article>
       </div>
@@ -208,27 +202,37 @@
       </div>
       <div class="timeline">
         <div class="tl-item">
-          <div class="title ex">PBI (Project-Based Internship) Big Data Analytics — Kimia Farma</div>
+          <div class="title ex">
+            <img src="assets/images/kimiafarma.jpg" alt="Kimia Farma" class="company-logo">
+            PBI (Project-Based Internship) Big Data Analytics — Kimia Farma</div>
           <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Aug 2025 – Present</div>
           <p>Participating in a project-based internship focused on big data analytics through weekly tasks, training modules, and a capstone project.</p>
         </div>
         <div class="tl-item">
-          <div class="title ex">Data Science Student — Digital Skola</div>
+          <div class="title ex">
+            <img src="assets/images/digitaskola.png" alt="Digital Skola" class="company-logo">
+            Data Science Student — Digital Skola</div>
           <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Mar 2025 – Aug 2025</div>
           <p>Built a strong foundation in data science, covering modeling, evaluation, and deployment while gaining hands-on experience with SQL, Python, statistics, visualization, and machine learning.</p>
         </div>
         <div class="tl-item">
-          <div class="title ex">Digital Electronics Laboratory Assistant — Universitas Indonesia</div>
+          <div class="title ex">
+            <img src="assets/images/ui.jpg" alt="Universitas Indonesia" class="company-logo">
+            Digital Electronics Laboratory Assistant — Universitas Indonesia</div>
           <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Sep 2024 – Dec 2024</div>
           <p>Supported lab sessions by revising modules, troubleshooting logic circuits, and evaluating student work with digital trainers and FPGA simulations.</p>
         </div>
         <div class="tl-item">
-          <div class="title ex">Machine Learning Cohort — Bangkit Academy</div>
+          <div class="title ex">
+            <img src="assets/images/bangkit.jpg" alt="Bangkit Academy" class="company-logo">
+            Machine Learning Cohort — Bangkit Academy</div>
           <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Feb 2024 – Jul 2024</div>
           <p>Completed 900+ hours of ML training, developed an NLP-based mental health app as a capstone project, and strengthened technical and soft skills for industry readiness.</p>
         </div>
         <div class="tl-item">
-          <div class="title ex">Freelance Subtitler — Sea Today</div>
+          <div class="title ex">
+            <img src="assets/images/seatoday.jpg" alt="Sea Today" class="company-logo">
+            Freelance Subtitler — Sea Today</div>
           <div class="meta" style="margin:.2rem 0 .4rem; color:var(--muted);">Jun 2021 – Nov 2023</div>
           <p>Translated and subtitled 10+ TV show episodes from Indonesian to English, ensuring clarity and cultural accuracy for international viewers.</p>
         </div>
