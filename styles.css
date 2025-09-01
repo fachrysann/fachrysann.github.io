@@ -199,7 +199,7 @@ header {
 
 /* ====== HERO ====== */
 .hero { 
-  padding-top: 4rem;   /* smaller than 8rem */
+  padding-top: 2rem;   /* smaller than 8rem */
   padding-bottom: 3rem; /* optional, reduce bottom too */
   display: grid; 
   grid-template-columns: 1fr 1fr; 
