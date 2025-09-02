@@ -456,6 +456,11 @@ footer .social-links a:hover { background: var(--text); color: var(--bg); border
   .dark .mobile { background: rgba(0,0,0,0.95); }
   .mobile a { display: block; padding: 0.75rem; border-radius: 0.5rem; color: var(--muted); }
   .mobile a:hover { color: var(--text); background: color-mix(in oklab, var(--text) 7%, transparent); }
+
+  /* Tighter mobile headings */
+  .section-head h2 { font-size: 2rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
 }
 
 @media (max-width: 900px) {
