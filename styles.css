@@ -200,6 +200,9 @@ header {
   cursor: pointer;
 }
 
+/* Match theme button size to hamburger */
+#themeBtn.btn { padding: 0.5rem 0.75rem; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; }
+
 /* ====== HERO ====== */
 .hero { 
   padding-top: 2rem;   /* smaller than 8rem */
@@ -448,7 +451,8 @@ footer .social-links a:hover { background: var(--text); color: var(--bg); border
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; padding: 4rem 0 3rem; gap: 2rem; }
-  .card { flex: 0 0 300px; padding: 1.2rem; }
+  .grid { gap: 1rem; padding: 0.5rem 0; }
+  .card { flex: 0 0 260px; padding: 1rem; }
   .nav ul.links { display: none; }
   .hamburger { display: inline-flex; }
   .container { width: 90vw; padding: 0 1rem; }
