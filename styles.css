@@ -452,7 +452,7 @@ footer .social-links a:hover { background: var(--text); color: var(--bg); border
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; padding: 4rem 0 3rem; gap: 2rem; }
   .grid { gap: 1rem; padding: 0.5rem 0; }
-  .card { flex: 0 0 280px; padding: 1rem; }
+  .card { flex: 0 0 270px; padding: 1rem; }
   .nav ul.links { display: none; }
   .hamburger { display: inline-flex; }
   .container { width: 90vw; padding: 0 1rem; }
