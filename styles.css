@@ -161,6 +161,9 @@ header {
 }
 .dark header { background: rgba(0, 0, 0, 0.95); border-bottom: 1px solid var(--border); }
 
+/* Hide mobile menu by default (desktop and mobile until toggled) */
+.mobile { display: none; }
+
 .nav { 
   display: flex; 
   align-items: center; 
