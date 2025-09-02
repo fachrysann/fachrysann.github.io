@@ -79,9 +79,16 @@
   <main class="container">
     <!-- HERO -->
     <section class="hero" id="home">
+      <!-- Decorative background elements for page‑grid style -->
+      <div class="hero-decor" aria-hidden="true">
+        <div class="hero-word hero-word-left">PROFILE&#128191;</div>
+        <div class="hero-word hero-word-right">&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;&#128379;&#128381;</div>
+        <div class="hero-curve hero-curve-left1"></div>
+        <div class="hero-curve hero-curve-right"></div>
+      </div>
       <div>
         <div class="tag">Available for internship</div>
-        <h1>Hi, I'm <span class="gradient">Fachry</span> — Turning data into <em>insight</em> with Machine Learning</h1>
+        <h1>Hi, I'm <span class="gradient">Fachry</span> — Harnessing data to drive innovation and intelligent solutions</h1>
         <p>Data scientist and machine learning enthusiast with experience in computer vision, tabular modeling, and end-to-end model deployment. Passionate about building practical ML solutions and interactive dashboards.</p>
         <div style="display:flex; gap:.7rem; margin-top:1.2rem; flex-wrap:wrap;">
           <a class="btn primary" href="#projects">See Projects</a>
@@ -112,7 +119,7 @@
         <h2>Featured Projects</h2>
       </div>
       <div class="grid">
-        <article class="card special">
+        <article class="card">
           <div class="project-thumb uber"></div>
           <div class="title">Machine Learning for Uber Fare Prediction in NYC</div>
           <p>Uber fare prediction in NYC using XGBoost regression. Incorporates real road distances from OSMnx for higher accuracy, deployed via Flask web app</p>
@@ -284,5 +291,10 @@
   </footer>
   <!-- JS -->
   <script src="script.js"></script>
+
+  <!-- Floating call‑to‑action button -->
+  <a href="#contact" class="floating-cta" aria-label="Get in touch">
+    <span>Let’s Talk</span>
+  </a>
 </body>
 </html>
