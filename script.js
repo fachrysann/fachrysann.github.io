@@ -69,28 +69,47 @@ document.querySelectorAll('.grid').forEach(grid => {
   let isDragging = false;
   let startX = 0;
   let startLeft = 0;
+  let pointerId = null;
+  const dragThresholdPx = 6; // allow small taps/clicks without triggering drag
+  let hasExceededThreshold = false;
 
   grid.addEventListener('pointerdown', (e) => {
     if (grid.scrollWidth <= grid.clientWidth) return;
-    isDragging = true;
+    // Don't initiate drag when starting from interactive controls (e.g., links/buttons)
+    if (e.target && e.target.closest && e.target.closest('a, button, input, textarea, select')) {
+      return;
+    }
+    pointerId = e.pointerId;
+    isDragging = false;
+    hasExceededThreshold = false;
     startX = e.clientX;
     startLeft = grid.scrollLeft;
-    grid.setPointerCapture(e.pointerId);
-    grid.style.cursor = 'grabbing';
   });
 
   grid.addEventListener('pointermove', (e) => {
+    if (pointerId === null) return;
+    const dx = e.clientX - startX;
+    if (!hasExceededThreshold && Math.abs(dx) > dragThresholdPx) {
+      hasExceededThreshold = true;
+      isDragging = true;
+      try { grid.setPointerCapture(pointerId); } catch (_) {}
+      grid.style.cursor = 'grabbing';
+    }
     if (!isDragging) return;
     e.preventDefault();
-    const dx = e.clientX - startX;
     grid.scrollLeft = startLeft - dx;
   });
 
   const endDrag = (e) => {
-    if (!isDragging) return;
+    if (pointerId === null) return;
+    const wasDragging = isDragging;
     isDragging = false;
-    try { grid.releasePointerCapture(e.pointerId); } catch (_) {}
-    grid.style.cursor = '';
+    hasExceededThreshold = false;
+    try { grid.releasePointerCapture(pointerId); } catch (_) {}
+    pointerId = null;
+    if (wasDragging) {
+      grid.style.cursor = '';
+    }
   };
   grid.addEventListener('pointerup', endDrag);
   grid.addEventListener('pointercancel', endDrag);
