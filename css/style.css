@@ -75,11 +75,11 @@ body.home-page .sidebar .active {
 
 .pixel-trail {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   background: #a200ff;  
   pointer-events: none;
-  z-index: 9998;
+  z-index: -1;
   opacity: 0.8;
   transform: translate(-50%, -50%);
   animation: fadeOut 0.4s linear forwards;
@@ -115,14 +115,48 @@ body.home-page .sidebar .active {
   transform: translateY(-50%);
   width: 60px;
   height: auto;
-  background: #a200ff; /* HOT PINK */
+
+  background: #a200ff; 
   color: white;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   padding: 16px 6px;
   border-radius: 6px 0 0 6px;
   z-index: 30;
+
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+/* Right side gradient overlay */
+.award-tag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(to left, #ff66ff, transparent);
+  opacity: 0;
+  transition: right 0.35s ease, opacity 0.35s ease;
+}
+
+/* Hover — gradient slides into view */
+.award-tag:hover::after {
+  right: 0;
+  opacity: 1;
+}
+
+/* Text stays on top */
+.award-tag .tag-top,
+.award-tag .tag-text {
+  position: relative;
+  z-index: 2;
 }
 
 /* Top bold text ("w.") */
@@ -132,7 +166,7 @@ body.home-page .sidebar .active {
   margin-bottom: 14px;
 }
 
-/* Vertical rotated text ("Nominee") */
+/* Vertical rotated text */
 .award-tag .tag-text {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -141,9 +175,27 @@ body.home-page .sidebar .active {
   letter-spacing: 1px;
 }
 
-/* 1. HERO */
+/* =========================================
+   1. HERO PAGE STYLES
+   ========================================= */
 body.home-page {
   background: #0e0e0e;
+}
+
+.home-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background-image: url("../assets/home-bg2.jpg");
+  background-size: cover;
+  background-position: center;
+
+  filter: grayscale(100%);
+  opacity: 0.12;
+
+  z-index: 1;
 }
 
 .hero {
@@ -154,6 +206,7 @@ body.home-page {
   padding: 80px 60px;
   width: 100%;
   gap: 80px;
+  background: radial-gradient(circle at top right, rgba(219, 157, 255, 0.2), transparent 45%);
 }
 
 .craft-arrow {
@@ -167,6 +220,7 @@ body.home-page {
   height: 750px;
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
 .tile-image img {
@@ -174,6 +228,51 @@ body.home-page {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+.hero-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;               /* adjust as you like */
+  height: 100%;
+  backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.35);
+  z-index: 20;
+}
+
+.hero-caption {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+
+  backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 22px 28px;
+  width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  z-index: 25;
+}
+
+.cap-number {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.cap-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 /* tile grid wrapper */
@@ -218,23 +317,10 @@ body.home-page {
 }
 
 .tiles div.wave-1 {
-  backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: blur(6px) saturate(180%) !important;
   background: rgba(255, 255, 255, 0.25) !important;
   opacity: 1 !important;
 }
-
-.tiles div.wave-2 {
-  backdrop-filter: blur(12px) saturate(150%) !important;
-  background: rgba(255, 255, 255, 0.18) !important;
-  opacity: 0.9 !important;
-}
-
-.tiles div.wave-3 {
-  backdrop-filter: blur(6px) saturate(120%) !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-  opacity: 0.8 !important;
-}
-
 
 .hero-text {
   padding: 0px 20px;
@@ -243,7 +329,7 @@ body.home-page {
 }
 
 .hero-text h1 {
-  font-size: 4.8rem;
+  font-size: 5.7rem;
   color: #f8deff;
   font-weight: 500;
   margin-bottom: 20px;
@@ -254,6 +340,22 @@ body.home-page {
   opacity: 0.7;
   margin-bottom: 20px;
   line-height: 1.6;
+  letter-spacing: -1px;
+}
+
+#typedText {
+  border-right: 3px solid #b32fff;
+  padding-right: 6px;
+  white-space: nowrap;
+  display: inline-block;
+  animation: blink 0.7s infinite;
+  font-weight: 500;
+}
+
+@keyframes blink {
+  0% { border-color: #b32fff; }
+  50% { border-color: transparent; }
+  100% { border-color: #b32fff; }
 }
 
 .craft-row {
@@ -277,20 +379,72 @@ body.home-page {
 .portfolio-link {
   display: inline-block;
   font-size: 2.2rem;
-  font-weight: 700;
-  color: #a200ff;
+  font-weight: 500;
+  color: #be4dff;
   text-decoration: none;
   margin-top: 6px;
   transition: 0.25s ease;
 }
 
 .portfolio-link:hover {
-  font-weight: 800;
+  font-weight: 500;
   opacity: 1;
   font-family: "Georgia", serif;
   font-style: italic;
   transform: translateX(2px);
 }
+
+/* FIXED SOCIAL ICON BLOCK */
+.social-fixed {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 99999;
+}
+
+/* ICON BUTTON STYLE */
+.social-fixed .soc-link {
+  width: 46px;
+  height: 46px;
+  background: #f8deff;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.social-fixed .soc-link2 {
+  width: 46px;
+  height: 46px;
+  background: #141414;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* Hover Floating Effect */
+.social-fixed .soc-link:hover {
+  transform: translateY(-2px);
+  background: #f8deff;
+}
+
+/* ICON COLOR */
+.social-fixed svg {
+  filter: invert(1); /* makes icon white */
+  width: 22px;
+  height: 22px;
+}
+
 
 /* CHATBOX container */
 .chatbox {
@@ -495,49 +649,91 @@ body.home-page {
   }
 }
 
-/* Floating toggle bubble */
+/* Toggle container */
 .chat-toggle {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 60px;
-  height: 60px;
-  background: #32CD32; /* match bubble */
 
-  color: white;
+  background: #f8deff;
+  color: black;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+
+  padding: 0 22px;
+  height: 52px;
 
   border-radius: 22px;
-  font-size: 28px;
   cursor: pointer;
 
-  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.35); /* green glow */
-  transition: 0.25s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+
+  transition: all 0.25s ease;
   z-index: 9999;
 }
 
+/* Hover effect */
 .chat-toggle:hover {
   transform: scale(1.07);
 }
 
-/* Badge */
-.chat-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  background: #ff0000;
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 3px 6px;
-  border-radius: 10px;
-  pointer-events: none;
-  display: none;          /* hidden by default */
+/* The text (shown when CLOSED) */
+.toggle-text {
+  opacity: 1;
+  transition: opacity .25s ease;
 }
 
-/* 2. DISCOVER ME */
+/* The X icon (hidden by default) */
+.icon-close {
+  display: none;
+  width: 24px;
+  height: 24px;
+  stroke: black;
+  stroke-width: 2;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🔥 ACTIVE STATE */
+.chat-toggle.active {
+  width: 60px !important;
+  height: 60px !important;
+  padding: 0 !important;
+  justify-content: center !important;
+}
+
+/* show X icon when opened */
+.chat-toggle.active .icon-close {
+  display: block;
+  opacity: 1;
+}
+
+.chat-toggle.active span.chat-label {
+  display: none !important;
+}
+
+.chat-toggle .chat-label {
+  font-size: 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 545;
+  letter-spacing: 0px;
+}
+
+.chat-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between label + X */
+  overflow: hidden; /* prevents flash */
+}
+
+/* =========================================
+   2. DISCOVER ME PAGE STYLES
+   ========================================= */
 .discover-section {
   margin-left: 180px;
   padding: 100px 60px;
@@ -549,6 +745,14 @@ body.home-page {
 .discover-left {
   display: flex;
   align-items: flex-start;
+}
+
+.discover-section {
+  margin-left: 180px;
+  padding: 100px 60px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 100vh;
 }
 
 .discover-title {
@@ -579,7 +783,9 @@ body.home-page {
   margin-top: -20px;
 }
 
-/* 3. PORTFOLIO PAGE */
+/* =========================================
+   3. PORTFOLIO PAGE STYLES
+   ========================================= */
 .portfolio-page {
   margin-left: 180px;
   padding: 120px 60px;
@@ -618,6 +824,7 @@ body.home-page {
   font-size: 3.1rem;
   font-weight: 400;
   margin-bottom: 10px;
+  letter-spacing: -2px;
 }
 
 /* HIDDEN DETAILS */
@@ -625,15 +832,19 @@ body.home-page {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transform: translateY(-20px);
-  transition: all 0.7s ease;
+  transform-origin: top;
+  transform: scaleY(0.85);
+  transition:
+    max-height 0.7s ease,
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(.25,.46,.45,.94);
 }
 
 /* SHOW ON HOVER */
 .portfolio-item:hover .p-details {
-  max-height: 200px;
+  max-height: 260px;
   opacity: 1;
-  transform: translateY(0);
+  transform: scaleY(1);
 }
 
 .p-desc {
@@ -666,4 +877,222 @@ body.home-page {
   border: none;
   height: 1px;
   background: #e8e8e8;
+}
+
+/* =========================================
+   4. SERVICES PAGE (Wide Layout)
+   ========================================= */
+.services-main {
+  margin-left: 180px;
+  padding: 100px 80px 60px 60px; /* Padding kanan lebih besar */
+  width: calc(100% - 180px);     /* Memastikan lebar penuh */
+  min-height: 100vh;
+}
+
+.page-header {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 4.5rem;
+  margin-bottom: 80px;
+  opacity: 0.9;
+}
+
+.services-container {
+  max-width: 1600px; /* Agar tidak terlalu lebar di layar 4k */
+  margin: 0 auto 0 0;
+}
+
+/* Flex container untuk memisahkan Kiri dan Kanan */
+.service-row {
+  display: flex; 
+  justify-content: space-between; /* KUNCI: Memisahkan kiri dan kanan */
+  align-items: flex-start;
+  padding: 35px 0;
+  transition: all 0.4s ease;
+}
+
+.service-row:hover {
+  padding-left: 15px; /* Sedikit geser saat hover */
+}
+
+/* Kolom Kiri (Nomor & Judul) */
+.s-left-col {
+  flex: 1; /* Mengambil ruang */
+  display: flex;
+  align-items: baseline;
+  gap: 30px;
+}
+
+.s-num {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #a200ff;
+  opacity: 0.8;
+}
+
+.s-title {
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: #1d1d1d;
+}
+
+/* Kolom Kanan (Deskripsi & Tags) */
+.s-right-col {
+  flex: 1;
+  padding-left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  max-width: 600px; /* Agar teks tidak terlalu panjang dibaca */
+  text-align: left; /* Tetap rata kiri agar rapi dibaca */
+}
+
+.s-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+.s-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.s-tags span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  color: #666;
+}
+
+.s-divider {
+  border: none;
+  height: 1px;
+  background: #e0e0e0;
+  width: 100%;
+}
+
+
+/* =========================================
+   5. CONTACT PAGE (Split Screen)
+   ========================================= */
+.contact-main {
+  margin-left: 180px;
+  width: calc(100% - 180px);
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 80px;
+}
+
+.contact-split {
+  width: 100%;
+  max-width: 1500px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Kiri sedikit lebih lebar */
+  gap: 60px;
+  align-items: center;
+}
+
+/* Bagian Kiri (Headline Besar) */
+.c-pretitle {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: #a200ff;
+  margin-bottom: 20px;
+}
+
+.c-headline {
+  font-size: 5.5rem;
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
+
+/* Bagian Kanan (Info & Email) */
+.c-right {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  border-left: 1px solid #eee; /* Garis pemisah vertikal */
+  padding-left: 60px;
+}
+
+.c-email {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1d1d1d;
+  text-decoration: none;
+  word-break: break-all; /* Agar tidak overflow jika email panjang */
+  transition: color 0.3s;
+}
+
+.c-email:hover {
+  color: #a200ff;
+  text-decoration: underline;
+}
+
+.c-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.c-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c-label {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0.4;
+  letter-spacing: 1px;
+}
+
+.c-val {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.c-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.c-links a {
+  text-decoration: none;
+  color: #1d1d1d;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.c-links a:hover {
+  color: #a200ff;
+  font-family: "Georgia", serif;
+  font-style: italic;
+}
+
+/* Status Dot Hijau */
+.status-dot::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #32CD32;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
 }
